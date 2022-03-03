@@ -18,12 +18,12 @@ public class EmailTest extends BaseTest {
                 .queryParam("first_name", "Adam")
                 .queryParam("last_name", "Risman")
         .when()
-                .get("/domain-search")
+                .get("/email-finder")
         .then()
                 .statusCode(200)
                 .body("data.domain", is("intercom.io"))
-                .body("data.first_name"), is("Adam"))
-                .body("data.last_name"), is("Risman"))
+                .body("data.first_name", is("Adam"))
+                .body("data.last_name", is("Risman"))
         ;
     }
 
