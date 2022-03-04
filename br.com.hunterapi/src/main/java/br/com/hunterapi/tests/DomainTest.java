@@ -1,7 +1,7 @@
 package br.com.hunterapi.tests;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
 
