@@ -1,6 +1,6 @@
 # Hunter API
 
-Testes desenvolvidos para estudos utilizados Java, Junit, Rest Assured e Maven
+Testes desenvolvidos para estudos utilizando Java, Junit, Rest Assured e Maven
 
 API de estudo: https://hunter.io/api-documentation
 
