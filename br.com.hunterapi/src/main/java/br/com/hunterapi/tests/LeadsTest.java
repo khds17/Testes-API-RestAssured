@@ -10,31 +10,35 @@ public class LeadsTest extends BaseTest {
 	
 	@Test
 	public void successCreate() {
-	given()
-		.queryParam("api_key", "6e3a7b039546ae7d5532b615bafe1656fb8082b1")
-		.body("{\n"
-				+ "    \"email\": \"kauan.henrique@wecares.com\",\n"
-				+ "    \"first_name\": \"Kauan\",\n"
-				+ "    \"last_name\": \"Henrique\",\n"
-				+ "    \"position\": \"Cofounder\",\n"
-				+ "    \"company\": \"WeCares\",\n"
-				+ "    \"company_industry\": \"Personal Care\",\n"
-				+ "    \"company_size\": \"1-50 employees\",\n"
-				+ "    \"confidence_score\": 17,\n"
-				+ "    \"website\": \"wecares.com.br\",\n"
-				+ "    \"custom_attributes\": {\n"
-				+ "        \"customer_id\": \"\"\n"
-				+ "    }\n"
-				+ "}")
-	.when()
-		.post("/leads")
-	.then()
-		.statusCode(201)
-		.body("data.first_name", is("Kauan"))
-		.body("data.last_name", is("Henrique"))
-		.body("data.email", is("khds2013@gmail.com"))
-		.body("data.website", is("wecares.com.br"))
-	;
+	
+		Lead lead = new Lead();
+		lead.setEmail("kauan.henrique@wecares.com");
+		lead.setFirst_name("Kauan");
+		lead.setLast_name("Henrique");
+		lead.setPosition("Cofounder");
+		lead.setCompany("WeCares");
+		lead.setCompany_industry("Personal Care");
+		lead.setCompany_size("1-50 employees");
+		lead.setConfidence_score(50);
+		lead.setWebsite("wecares.com.br");
+			
+		given()
+			.queryParam("api_key", "6e3a7b039546ae7d5532b615bafe1656fb8082b1")
+			.body(lead)
+		.when()
+			.post("/leads")
+		.then()
+			.statusCode(201)
+			.body("data.email", is("kauan.henrique@wecares.com"))
+			.body("data.first_name", is("Kauan"))
+			.body("data.last_name", is("Henrique"))
+			.body("data.position", is("Cofounder"))
+			.body("data.company", is("WeCares"))
+			.body("data.company_industry", is("Personal Care"))
+			.body("data.confidence_score", is(50))
+			.body("data.website", is("wecares.com.br"))
+			.body("data.company_size", is("1-50 employees"))
+		;
 	}
 
 }
